@@ -12,11 +12,11 @@ define :my_play do |bpm, sample_sym, repeats|
 end
 
 
-high = 4
-low = 3
+high = 3
+low = 4
 
 state = 1
-start_bpm = 30.0
+start_bpm = 40.0
 end_bpm = start_bpm*1.0*high/low
 bpm = start_bpm
 
@@ -38,11 +38,11 @@ live_loop :arp do
       my_play bpm, sound_b, low
       
       
-      if bpm >= end_bpm
+      if ((start_bpm < end_bpm) && (bpm >= end_bpm)) || ((start_bpm >= end_bpm) && (bpm <= end_bpm))
         state = 2
         bpm = end_bpm
       else
-        bpm += start_bpm/(1.0*low*high)
+        bpm += (end_bpm - start_bpm)/10.0
       end
       
     elsif state == 2
