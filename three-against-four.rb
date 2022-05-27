@@ -1,5 +1,3 @@
-load_sample :perc_snap2
-
 define :my_play do |bpm, sample_sym, repeats|
   in_thread do
     with_bpm bpm do
@@ -23,10 +21,8 @@ bpm = start_bpm
 sound_a = :perc_snap
 sound_b = :perc_snap2
 
-live_loop :arp do
-  #loop do
+live_loop :polyrythm do
   with_bpm bpm do
-    
     
     if state == 1
       
