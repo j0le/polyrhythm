@@ -33,8 +33,9 @@ live_loop :polyrythm do
       my_play bpm, sound_a, high
       my_play bpm, sound_b, low
       
+      getting_faster = start_bpm < end_bpm
       
-      if ((start_bpm < end_bpm) && (bpm >= end_bpm)) || ((start_bpm >= end_bpm) && (bpm <= end_bpm))
+      if (getting_faster && (bpm >= end_bpm)) || (!getting_faster && (bpm <= end_bpm))
         state = 2
         bpm = end_bpm
       else
