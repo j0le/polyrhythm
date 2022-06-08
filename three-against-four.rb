@@ -10,12 +10,12 @@ define :my_play do |bpm, sample_sym, repeats|
 end
 
 
-high = 3
-low = 4
+repeats_x = 3
+repeats_y = 4
 
 state = 1
 start_bpm = 40.0
-end_bpm = start_bpm*1.0*high/low
+end_bpm = start_bpm*1.0*repeats_x/repeats_y
 bpm = start_bpm
 
 sound_a = :perc_snap
@@ -30,8 +30,8 @@ live_loop :polyrythm do
         sample :perc_bell, amp: 0.5
       end
       
-      my_play bpm, sound_a, high
-      my_play bpm, sound_b, low
+      my_play bpm, sound_a, repeats_x
+      my_play bpm, sound_b, repeats_y
       
       getting_faster = start_bpm < end_bpm
       
@@ -45,14 +45,14 @@ live_loop :polyrythm do
     elsif state == 2
       sample :perc_bell, amp: 0.5
       sample sound_a
-      my_play bpm, sound_b, low
+      my_play bpm, sound_b, repeats_y
       
       bpm = start_bpm
       state=3
       
     elsif state == 3
       sample :perc_bell, amp: 0.5
-      my_play bpm, sound_b, high
+      my_play bpm, sound_b, repeats_x
       
       # swap sounds
       helper = sound_a
