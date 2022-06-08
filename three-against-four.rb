@@ -39,7 +39,7 @@ live_loop :polyrythm do
         state = 2
         bpm = end_bpm
       else
-        bpm += (end_bpm - start_bpm)/10.0
+        bpm += (end_bpm - start_bpm)/6.0
       end
       
     elsif state == 2
